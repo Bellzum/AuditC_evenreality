@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AuditC PathGuard</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #0a0a0a;
+        color: #00ff44;
+        font-family: 'Courier New', monospace;
+        padding: 24px;
+        min-height: 100vh;
+      }
+      h1 { font-size: 18px; margin: 0 0 16px; border-bottom: 1px solid #00ff4440; padding-bottom: 8px; }
+      #app-status { font-size: 13px; color: #00ff4480; margin-bottom: 20px; }
+      #glasses-preview {
+        background: #000;
+        border: 1px solid #00ff4440;
+        padding: 12px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        white-space: pre;
+        line-height: 1.6;
+      }
+      #glasses-preview .header { color: #00ff44; }
+      #glasses-preview .step   { color: #ccffcc; }
+      #glasses-preview .status-confirmed { color: #00ff44; }
+      #glasses-preview .status-repeat    { color: #ffff00; }
+      #glasses-preview .status-flagged   { color: #ff8800; }
+      #glasses-preview .status-listening { color: #88ccff; }
+      #glasses-preview .heard  { color: #00ff4460; font-style: italic; }
+      #mic-row { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+      button {
+        padding: 10px 20px;
+        background: #001a00;
+        color: #00ff44;
+        border: 1px solid #00ff44;
+        cursor: pointer;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+      }
+      button:active { background: #003300; }
+      button:disabled { opacity: 0.3; cursor: not-allowed; }
+      #log {
+        font-size: 11px;
+        color: #00ff4460;
+        max-height: 200px;
+        overflow-y: auto;
+        border-top: 1px solid #00ff4420;
+        padding-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AuditC PathGuard — Companion</h1>
+    <div id="app-status">Connecting to G2 glasses...</div>
+    <div id="glasses-preview">Initializing...</div>
+    <div id="mic-row">
+      <button id="mic-btn">Start Listening</button>
+      <button id="report-btn" disabled>Download Report</button>
+    </div>
+    <div id="log"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "protocol": "COVID-19 PCR",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": 1,
+      "name": "Specimen Intake",
+      "instruction": "Confirm specimen ID and condition"
+    },
+    {
+      "id": 2,
+      "name": "Reagent Aliquot",
+      "instruction": "Confirm reagent lot + volume measured"
+    },
+    {
+      "id": 3,
+      "name": "Transfer to Tube",
+      "instruction": "Confirm tube barcode matches specimen"
+    },
+    {
+      "id": 4,
+      "name": "PCR Machine Run",
+      "instruction": "Confirm run initiated and cycling"
+    },
+    {
+      "id": 5,
+      "name": "Result Analysis",
+      "instruction": "Confirm result recorded and logged"
+    }
+  ],
+  "exception_words": [
+    "contaminated", "failed", "error", "wrong", "expired",
+    "missing", "abnormal", "leak", "spill", "broken", "repeat", "redo"
+  ],
+  "flag_triggers": ["flag issue", "supervisor", "flag this"],
+  "outcomes": {
+    "confirmed": "No exception words detected — advances to next step",
+    "repeat":    "Exception words detected — stays on step, logs incident",
+    "flagged":   "Flag trigger spoken — logs for supervisor, tap to resume"
+  }
+}
