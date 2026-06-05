@@ -1,6 +1,20 @@
 {
-  "appId": "com.auditc.pathguard",
-  "name": "AuditC PathGuard",
+  "package_id": "com.auditc.glasses",
+  "name": "AuditC",
   "version": "1.0.0",
-  "description": "COVID-19 PCR SOP compliance assistant for G2 smart glasses"
+  "edition": "202601",
+  "min_app_version": "1.0.0",
+  "min_sdk_version": "0.0.10",
+  "entrypoint": "index.html",
+  "permissions": [
+    {
+      "name": "phone-microphone",
+      "desc": "Used to capture spoken lab procedure steps for SOP compliance checking."
+    },
+    {
+      "name": "network",
+      "desc": "Used to send recognized procedure text to the AuditC backend for verification."
+    }
+  ],
+  "supported_languages": ["en", "ja"]
 }
