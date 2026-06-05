@@ -1,16 +1,19 @@
 export type VoiceCallback = (text: string) => void
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnySpeechRecognition = any
+
 export class VoiceInput {
-  private recognition: SpeechRecognition | null = null
+  private recognition: AnySpeechRecognition = null
   private callback: VoiceCallback
   private active = false
   private supported = false
 
   constructor(callback: VoiceCallback) {
     this.callback = callback
-    const SR = (window as Window & { webkitSpeechRecognition?: typeof SpeechRecognition })
-      .SpeechRecognition ?? (window as Window & { webkitSpeechRecognition?: typeof SpeechRecognition })
-      .webkitSpeechRecognition
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const w = window as any
+    const SR = w.SpeechRecognition ?? w.webkitSpeechRecognition
 
     if (!SR) {
       console.warn('Web Speech API not available — HTTPS required on non-localhost')
@@ -24,7 +27,7 @@ export class VoiceInput {
     this.recognition.lang = 'en-US'
     this.recognition.maxAlternatives = 1
 
-    this.recognition.onresult = (event) => {
+    this.recognition.onresult = (event: AnySpeechRecognition) => {
       const text = event.results[event.results.length - 1][0].transcript.toLowerCase().trim()
       if (text) this.callback(text)
     }
@@ -37,7 +40,7 @@ export class VoiceInput {
       }
     }
 
-    this.recognition.onerror = (event) => {
+    this.recognition.onerror = (event: AnySpeechRecognition) => {
       if (event.error === 'aborted' || event.error === 'no-speech') return
       console.error('Speech recognition error:', event.error)
       if (this.active) {

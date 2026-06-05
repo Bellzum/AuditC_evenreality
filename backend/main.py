@@ -121,7 +121,7 @@ def generate_report_pdf():
 
     # Header
     pdf.set_font("Helvetica", "B", 16)
-    pdf.cell(0, 10, "AuditC PathGuard — Audit Report", ln=True, align="C")
+    pdf.cell(0, 10, "AuditC PathGuard - Audit Report", ln=True, align="C")
     pdf.set_font("Helvetica", "", 9)
     pdf.cell(0, 6, f"Protocol: {session.get('protocol', 'COVID-19 PCR')}", ln=True, align="C")
     pdf.cell(0, 6, f"Session ID: {session.get('session_id', 'unknown')}", ln=True, align="C")

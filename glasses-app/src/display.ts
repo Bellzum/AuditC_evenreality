@@ -101,7 +101,7 @@ export function setStep(
   total: number,
   name: string,
   instruction: string,
-): Promise<void> {
+): Promise<unknown> {
   const content = `Step ${stepNum}/${total}\n${name}\n\n${instruction}`
   return enqueue(() =>
     bridge.textContainerUpgrade(new TextContainerUpgrade({
@@ -109,20 +109,20 @@ export function setStep(
       containerName: CONTAINER.STEP.name,
       content,
     }))
-  ) as Promise<void>
+  )
 }
 
-export function setStatus(bridge: EvenBridge, status: DisplayStatus): Promise<void> {
+export function setStatus(bridge: EvenBridge, status: DisplayStatus): Promise<unknown> {
   return enqueue(() =>
     bridge.textContainerUpgrade(new TextContainerUpgrade({
       containerID: CONTAINER.STATUS.id,
       containerName: CONTAINER.STATUS.name,
       content: STATUS_LABELS[status],
     }))
-  ) as Promise<void>
+  )
 }
 
-export function setHeard(bridge: EvenBridge, text: string): Promise<void> {
+export function setHeard(bridge: EvenBridge, text: string): Promise<unknown> {
   const truncated = text.length > 80 ? text.slice(0, 77) + '...' : text
   return enqueue(() =>
     bridge.textContainerUpgrade(new TextContainerUpgrade({
@@ -130,5 +130,5 @@ export function setHeard(bridge: EvenBridge, text: string): Promise<void> {
       containerName: CONTAINER.HEARD.name,
       content: `"${truncated}"`,
     }))
-  ) as Promise<void>
+  )
 }

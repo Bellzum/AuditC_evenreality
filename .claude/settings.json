@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh repo *)",
+      "Bash(find /tmp/evenhub-templates -type f \\\\\\( -name \"*.ts\" -o -name \"*.js\" -o -name \"*.json\" -o -name \"*.md\" \\\\\\) | grep -v node_modules | sort)",
+      "Read(//private/tmp/evenhub-templates/**)",
+      "Bash(tree -L 2 /tmp/evenhub-templates 2>/dev/null || find /tmp/evenhub-templates -maxdepth 2 -type d | sort)",
+      "Read(//tmp/evenhub-templates/**)",
+      "Read(//tmp/evenhub-templates/minimal/src/**)",
+      "Read(//private/tmp/evenhub-templates/minimal/src/**)",
+      "Read(//tmp/evenhub-templates/minimal/**)",
+      "Read(//private/tmp/evenhub-templates/minimal/**)",
+      "Read(//tmp/evenhub-templates/asr/src/**)",
+      "Read(//private/tmp/evenhub-templates/asr/src/**)",
+      "Bash(mkdir -p /Users/umbhorn/Desktop/G2_glasses/glasses-app/src /Users/umbhorn/Desktop/G2_glasses/backend)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git ls-tree *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(pip install *)",
+      "Bash(npm install *)",
+      "Bash(pip3 install *)",
+      "Bash(curl -s -X POST http://localhost:8000/verify-step -H 'Content-Type: application/json' -d '{\"step_id\": 1, \"spoken_text\": \"specimen id confirmed barcode 1234\"}')",
+      "Bash(curl -s -X POST http://localhost:8000/verify-step -H 'Content-Type: application/json' -d '{\"step_id\": 1, \"spoken_text\": \"sample is contaminated\"}')",
+      "Bash(curl -s -X POST http://localhost:8000/verify-step -H 'Content-Type: application/json' -d '{\"step_id\": 2, \"spoken_text\": \"flag issue need supervisor\"}')",
+      "Bash(curl -s -X POST http://localhost:8000/log-observation -H 'Content-Type: application/json' -d '{\"step_id\": 1, \"spoken_text\": \"specimen confirmed\", \"outcome\": \"confirmed\"}')",
+      "Bash(curl -s -X POST http://localhost:8000/log-observation -H 'Content-Type: application/json' -d '{\"step_id\": 1, \"spoken_text\": \"sample contaminated\", \"outcome\": \"repeat\"}')",
+      "Bash(curl -s -X POST http://localhost:8000/generate-report -o /tmp/test_report.pdf)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -X POST http://localhost:8000/generate-report)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173)"
+    ],
+    "additionalDirectories": [
+      "/Users/umbhorn/Desktop/G2_glasses/glasses-app"
+    ]
+  }
+}
